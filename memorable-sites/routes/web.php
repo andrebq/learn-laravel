@@ -18,7 +18,6 @@ use App\Models\Bookmark;
 
 Route::get('/', function () {
     $bookmarks = Bookmark::mostRelevant();
-    ddd($bookmarks);
     return view('index', [
         'bookmarks' => $bookmarks,
     ]);

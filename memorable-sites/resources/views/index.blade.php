@@ -33,19 +33,19 @@
             <section>
                 <h2>Bookmarks</h2>
                 <ul>
+                    @foreach ($bookmarks as $item)
                     <li>
                         <article>
-                            <h3><a href="#">Laracasts</a></h3>
-                            <p>
-                                A wonderful resource for those that venture through the non-sense of overly complex frameworks
-                                designed to make the author rich-af
-                            </p>
+                            <h3><a href="#{{$item->slug}}">{{ $item->title }}</a></h3>
+                            {!! $item->body_as_safe_html() !!}
                             <ul>
-                                <li><span>language</span><span>php</span></li>
-                                <li><span>framework</span><span>laravel</span></li>
+                            @foreach ($item->tags as $tag)
+                                <li><span>{{$tag->key}}</span><span>{{$tag->value}}</span></li>
+                            @endforeach
                             </ul>
                         </article>
                     </li>
+                    @endforeach
                 </ul>
             </section>
         </section>
